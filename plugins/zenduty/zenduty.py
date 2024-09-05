@@ -54,24 +54,25 @@ class TriggerEvent(PluginBase):
 
         LOG.debug("PagerDuty response: %s - %s", r.status_code, r.text)
 
-    # def status_change(self, alert, status, text):
+    def status_change(self, alert, status, text):
+        LOG.debug("status_change")
+        pass
+        # if status not in ["ack", "assign"]:
+        #     return
 
-    #     if status not in ["ack", "assign"]:
-    #         return
+        # payload = {
+        #     "service_key": self.pagerduty_service_key(alert.resource),
+        #     "incident_key": alert.id,
+        #     "event_type": "acknowledge",
+        #     "description": text,
+        #     "details": alert.get_body(history=False),
+        # }
 
-    #     payload = {
-    #         "service_key": self.pagerduty_service_key(alert.resource),
-    #         "incident_key": alert.id,
-    #         "event_type": "acknowledge",
-    #         "description": text,
-    #         "details": alert.get_body(history=False),
-    #     }
+        # LOG.debug("PagerDuty payload: %s", payload)
 
-    #     LOG.debug("PagerDuty payload: %s", payload)
+        # try:
+        #     r = requests.post(PAGERDUTY_EVENTS_URL, json=payload, timeout=2)
+        # except Exception as e:
+        #     raise RuntimeError("PagerDuty connection error: %s" % e)
 
-    #     try:
-    #         r = requests.post(PAGERDUTY_EVENTS_URL, json=payload, timeout=2)
-    #     except Exception as e:
-    #         raise RuntimeError("PagerDuty connection error: %s" % e)
-
-    #     LOG.debug("PagerDuty response: %s - %s", r.status_code, r.text)
+        # LOG.debug("PagerDuty response: %s - %s", r.status_code, r.text)
