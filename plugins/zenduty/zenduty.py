@@ -13,7 +13,7 @@ from alerta.plugins import PluginBase
 
 LOG = logging.getLogger("alerta.plugins.zenduty")
 
-PAGERDUTY_EVENTS_URL = "http://localhost:8000/api/account/outgoing/alerta/webhook/2dbf673c-26ac-41b6-a344-13f8ea8ce918/"
+PAGERDUTY_EVENTS_URL = " https://ce5c-103-174-71-214.ngrok-free.app/api/account/outgoing/alerta/webhook/2dbf673c-26ac-41b6-a344-13f8ea8ce918/"
 # PAGERDUTY_SERVICE_KEY = os.environ.get("PAGERDUTY_SERVICE_KEY") or app.config["PAGERDUTY_SERVICE_KEY"]
 # SERVICE_KEY_MATCHERS = os.environ.get("SERVICE_KEY_MATCHERS") or app.config["SERVICE_KEY_MATCHERS"]
 # DASHBOARD_URL = os.environ.get("DASHBOARD_URL") or app.config.get("DASHBOARD_URL", "")
