@@ -48,7 +48,7 @@ class TriggerEvent(PluginBase):
         payload = {
             "incident_key": alert.id,
             "description": text,
-            "status": status
+            "status": status,
             "details": alert.get_body(history=False),
         }
 
