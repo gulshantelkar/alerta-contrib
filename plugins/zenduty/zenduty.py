@@ -27,6 +27,7 @@ class TriggerEvent(PluginBase):
             "incident_key": alert.id,
             "description": message,
             "client": "alerta",
+            "status": alert.status,
             "details": alert.get_body(history=False),
         }
 
@@ -47,6 +48,7 @@ class TriggerEvent(PluginBase):
         payload = {
             "incident_key": alert.id,
             "description": text,
+            "status": status
             "details": alert.get_body(history=False),
         }
 
