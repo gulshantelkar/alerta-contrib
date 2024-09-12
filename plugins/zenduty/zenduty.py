@@ -42,13 +42,34 @@ class TriggerEvent(PluginBase):
 
     def status_change(self, alert, status, text):
         LOG.debug("status_change")
-        if status not in ["ack", "assign","closed","expired"]:
+        if status not in ["ack", "assign", "closed", "expired"]:
             return
 
         payload = {
             "incident_key": alert.id,
             "description": text,
             "status": status,
+            "details": alert.get_body(history=False),
+        }
+
+        LOG.debug("Zenduty payload: %s", payload)
+
+        try:
+            r = requests.post(ZENDUTY_EVENTS_URL, json=payload, timeout=2)
+        except Exception as e:
+            raise RuntimeError("Zenduty connection error: %s" % e)
+
+        LOG.debug("Zenduty response: %s - %s", r.status_code, r.text)
+    
+    def post_action(self, alert, action, text):
+        LOG.debug("status_change")
+        if action not in ["ack", "assign", "closed", "expired"]:
+            return
+
+        payload = {
+            "incident_key": alert.id,
+            "description": text,
+            "status": action,
             "details": alert.get_body(history=False),
         }
 
