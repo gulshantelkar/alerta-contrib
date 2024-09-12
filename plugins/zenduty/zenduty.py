@@ -61,7 +61,7 @@ class TriggerEvent(PluginBase):
 
         LOG.debug("Zenduty response: %s - %s", r.status_code, r.text)
     
-    def post_action(self, alert, action, text, timeout=None):
+    def post_action(self, alert, action, text, **kwargs):
         LOG.debug("status_change")
         if action not in ["ack", "assign", "closed", "expired"]:
             return
