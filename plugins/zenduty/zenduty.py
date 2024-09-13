@@ -8,7 +8,7 @@ from alerta.plugins import PluginBase
 
 LOG = logging.getLogger("alerta.plugins.zenduty")
 
-ZENDUTY_EVENTS_URL = "https://d344-103-174-71-214.ngrok-free.app/api/account/outgoing/alerta/webhook/2dbf673c-26ac-41b6-a344-13f8ea8ce918/"
+ZENDUTY_EVENTS_URL = "http://d344-103-174-71-214.ngrok-free.app/api/appsync/webhook/alerta.zenduty.com/"
 
 
 class TriggerEvent(PluginBase):
