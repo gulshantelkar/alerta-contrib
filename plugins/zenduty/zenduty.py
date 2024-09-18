@@ -1,14 +1,19 @@
 import logging
+import os
 
-# import os
-# import re
 
 import requests
 from alerta.plugins import PluginBase
+try:
+    from alerta.plugins import app  # alerta >= 5.0
+except ImportError:
+    from alerta.app import app  # alerta < 5.0
 
 LOG = logging.getLogger("alerta.plugins.zenduty")
+DASHBOARD_URL = os.environ.get(
+    'DASHBOARD_URL') or app.config['DASHBOARD_URL']
 
-ZENDUTY_EVENTS_URL = "https://d344-103-174-71-214.ngrok-free.app/api/appsync/webhook/d9f75dbb0b5643268a993159207b98a1/"
+ZENDUTY_EVENTS_URL = "https://d344-103-174-71-214.ngrok-free.app/api/appsync/webhook/DASHBOARD_URL/"
 
 
 class TriggerEvent(PluginBase):
