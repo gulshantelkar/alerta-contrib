@@ -47,7 +47,7 @@ class TriggerEvent(PluginBase):
 
     def status_change(self, alert, status, text):
         LOG.debug("status_change")
-        if status not in ["ack", "assign", "closed", "expired"]:
+        if status not in ["open", "ack", "assign", "closed", "expired"]:
             return
 
         payload = {
@@ -68,7 +68,7 @@ class TriggerEvent(PluginBase):
     
     def post_action(self, alert, action, text, **kwargs):
         LOG.debug("status_change")
-        if action not in ["ack", "assign", "closed", "expired"]:
+        if status not in ["open", "ack", "assign", "closed", "expired"]:
             return
 
         payload = {
